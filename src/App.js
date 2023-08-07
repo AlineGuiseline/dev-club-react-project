@@ -8,11 +8,14 @@ import {
   Button,
 } from "./styles";
 
+import People from './assets/people.svg';
+import Arrow from './assets/arrow.svg';
+
 function App() {
 
   return (
     <Container>
-      <Image/>
+      <Image alt="logo-imagem" src={People} />
       <ContainerItems>
       <H1>Olá!</H1>
 
@@ -22,8 +25,7 @@ function App() {
       <InputLabel>Idade</InputLabel>
       <Input placeholder="Idade" />
 
-      <Button>Cadastrar</Button>
-      
+      <Button>Cadastrar <img alt="seta" src={Arrow}/></Button>
       </ContainerItems>
     </Container>
   );
