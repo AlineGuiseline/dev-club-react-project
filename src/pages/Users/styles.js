@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import Background1 from "./assets/background1.svg";
+import Background2 from "../../assets/background2.svg";
 
 const Container = styled.div`
-  background: url("${Background1}");
+  background: url("${Background2}");
   background-size: cover;
   display: flex;
   flex-direction: column;
@@ -25,8 +25,10 @@ const ContainerItems = styled.div`
     rgba(255, 255, 255, 0.6) 0.01%,
     rgba(255, 255, 255, 0.15) 100%
   );
+  backdrop-filter: blur(22.5px);
   padding: 50px 36px;
-  height: 100vh;
+  height: 100%;
+  min-height: calc(100vh - 170px);
 `;
 
 const H1 = styled.h1`
@@ -39,41 +41,14 @@ const H1 = styled.h1`
   margin-bottom: 80px;
 `;
 
-const InputLabel = styled.p`
-  color: #eee;
-  letter-spacing: -0.408px;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: bold;
-  line-height: 22px;
-  margin-left: 25px;
-`;
-
-const Input = styled.input`
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.25);
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  width: 342px;
-  height: 58px;
-  border: none;
-  outline: none;
-  padding-left: 25px;
-  margin-bottom: 34px;
-
-  color: #fff;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 20px;
-  line-height: 28px;
-`;
-
 const Button = styled.button`
   width: 342px;
   height: 74px;
+  margin-top: 120px;
 
   border-radius: 14px;
-  border: none;
-  background: var(--templates-5-color-1, rgba(0, 0, 0, 0.8));
+  border: 1px solid #FFF;
+  background: transparent;
 
   color: #fff;
   font-style: normal;
@@ -93,6 +68,10 @@ const Button = styled.button`
 
   &:active {
     opacity: 0.5;
+  }
+
+  img {
+    transform: rotateY(180deg);
   }
 `;
 
@@ -130,8 +109,6 @@ export {
   Image,
   ContainerItems,
   H1,
-  InputLabel,
-  Input,
   Button,
   User,
 };

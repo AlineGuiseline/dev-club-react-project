@@ -1,4 +1,5 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import {
@@ -6,30 +7,17 @@ import {
   Image,
   ContainerItems,
   H1,
-  InputLabel,
-  Input,
   Button,
   User,
 } from "./styles";
 
-import People from "./assets/people.svg";
-import Arrow from "./assets/arrow.svg";
-import Trash from "./assets/trash.svg";
+import Avatar from "../../assets/avatar.svg";
+import Arrow from "../../assets/arrow.svg";
+import Trash from "../../assets/trash.svg";
 
-function App() {
-  // const users = [];
+function Users() {
   const [users, setUsers] = useState([]); //vamos manipular com um map, então precisamos de um array vazio
-  const inputName = useRef();
-  const inputAge = useRef();
-
-  async function addNewUser() {
-    const { data: newUser } = await axios.post("http://localhost:3001/users", {
-      name: inputName.current.value,
-      age: inputAge.current.value,
-    });
-
-    setUsers([...users, newUser]);
-  }
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchUsers(){
@@ -61,21 +49,15 @@ function App() {
     setUsers(newUsers);
   }
 
+  function goBackPage() {
+    navigate("/");
+  }
+
   return (
     <Container>
-      <Image alt="logo-imagem" src={People} />
+      <Image alt="logo-imagem" src={Avatar} />
       <ContainerItems>
-        <H1>Olá!</H1>
-
-        <InputLabel>Nome</InputLabel>
-        <Input ref={inputName} placeholder="Nome" />
-
-        <InputLabel>Idade</InputLabel>
-        <Input ref={inputAge} placeholder="Idade" />
-
-        <Button onClick={addNewUser}>
-          Cadastrar <img alt="seta" src={Arrow} />
-        </Button>
+        <H1>Usuários</H1>
 
         <ul>
           {users.map((user) => (
@@ -87,9 +69,14 @@ function App() {
             </User>
           ))}
         </ul>
+
+        <Button onClick={goBackPage}>
+        <img alt="seta" src={Arrow} /> Voltar 
+        </Button>
+
       </ContainerItems>
     </Container>
   );
 }
 
-export default App;
+export default Users;
