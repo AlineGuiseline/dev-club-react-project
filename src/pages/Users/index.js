@@ -19,9 +19,11 @@ function Users() {
   const [users, setUsers] = useState([]); //vamos manipular com um map, então precisamos de um array vazio
   const navigate = useNavigate();
 
+  const url = 'https://dev-club-node-project.vercel.app'
+
   useEffect(() => {
     async function fetchUsers(){
-      const { data: newUsers } = await axios.get("http://localhost:3001/users")
+      const { data: newUsers } = await axios.get(`${url}/users`)
 
       setUsers(newUsers)
     }
@@ -43,7 +45,7 @@ function Users() {
     */
 
   async function deleteUser(userId) {
-    await axios.delete(`http://localhost:3001/users/${userId}`)
+    await axios.delete(`${url}/users/${userId}`)
 
     const newUsers = users.filter((user) => user.id !== userId);
     setUsers(newUsers);
